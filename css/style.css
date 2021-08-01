@@ -119,9 +119,73 @@ section {
   line-height: 2rem;
 }
 
+.skill-container {
+  width: 100%;
+  display: flex;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.skill {
+  width: 25%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  border-radius: 9px;
+  padding: 0.5rem 1rem;
+  margin: 0 1rem;
+  box-shadow: 10px 10px 10px -5px rgba(25, 42, 70, 0.2);
+}
+
+.skill-icon {
+  font-size: 2.5rem;
+  margin: 0 10px;
+}
+
+.skill-title {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.skill-name {
+  font-weight: bold;
+  color: #545e6f;
+  margin-bottom: 0.2rem;
+}
+
+.skill-usage {
+  font-size: 0.9rem;
+  color: #545e6f;
+}
+
+.python-style {
+  color: #2186c4;
+}
+
+.analysis-style {
+  color: #ff8066;
+}
+
+.ai-style {
+  color: #f7df1e;
+}
+
+.vue-style {
+  color: #2e7d32;
+}
+
 /* min-width >= 1200px; */
 @media only screen and (min-width: 1200px) {
   .inner {
     max-width: 1200px;
+  }
+}
+
+/* 화면 너비가 980px보다 작으면 skill-container를 안보이게 */
+@media only screen and (max-width: 980px) {
+  .skill-container {
+    display: none;
   }
 }
