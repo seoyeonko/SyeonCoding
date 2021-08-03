@@ -176,6 +176,41 @@ section {
   color: #2e7d32;
 }
 
+.roadmap-container {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.roadmap-title-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.roadmap-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #545e6f;
+}
+
+.arrow-container {
+  display: flex;
+  /* display 속성을 flex로 설정하면서 inline-block이던 아이콘을 flex로 변경 */
+}
+
+.slide-prev {
+  font-size: 2rem;
+  cursor: pointer;
+  color: rgb(47, 48, 49);
+}
+
+.slide-next {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #cfd8dc;
+}
+
 /* min-width >= 1200px; */
 @media only screen and (min-width: 1200px) {
   .inner {
@@ -183,7 +218,7 @@ section {
   }
 }
 
-/* 화면 너비가 980px보다 작으면 skill-container를 안보이게 */
+/* 화면 너비가 980px 이하면 skill-container를 안보이게 */
 @media only screen and (max-width: 980px) {
   .skill-container {
     display: none;
