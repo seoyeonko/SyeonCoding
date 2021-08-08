@@ -138,6 +138,11 @@ section {
   padding: 0.5rem 1rem;
   margin: 0 1rem;
   box-shadow: 10px 10px 10px -5px rgba(25, 42, 70, 0.2);
+
+  transition: 0.4s;
+}
+.skill:hover {
+  transform: translate(0, -5px);
 }
 
 .skill-icon {
@@ -223,13 +228,19 @@ section {
 
 .class-card {
   width: 240px;
-  box-shadow: 10px 10px 10px -5px rgba(25, 42, 70, 0.2);
+  box-shadow: 10px 10px 10px 0px rgba(25, 42, 70, 0.2);
   border-radius: 8px;
   margin: 0 10px;
+
+  transition: 0.4s;
+}
+.class-card:hover {
+  box-shadow: 10px 10px 10px -5px rgba(25, 42, 70, 0.2);
+  transform: translate(0, -5px);
 }
 
 .class-image {
-  width: 100%;
+  width: 240px;
   border-radius: 8px 8px 0 0;
   height: 150px;
 }
@@ -275,6 +286,15 @@ section {
 .class-detail {
   font-size: 0.9rem;
   color: #545e6f;
+  line-height: 1.5rem;
+}
+
+.roadmap-desc {
+  display: visible;
+}
+
+li a:hover {
+  cursor: pointer;
 }
 
 /* min-width >= 1200px; */
@@ -287,6 +307,9 @@ section {
 /* 화면 너비가 980px 이하면 skill-container를 안보이게 */
 @media only screen and (max-width: 980px) {
   .skill-container {
+    display: none;
+  }
+  .roadmap-desc {
     display: none;
   }
 }
