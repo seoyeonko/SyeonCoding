@@ -227,12 +227,13 @@ section {
 }
 
 .class-card {
-  width: 240px;
+  max-width: 240px; /* Cross Browsing */
   box-shadow: 10px 10px 10px 0px rgba(25, 42, 70, 0.2);
   border-radius: 8px;
   margin: 0 10px;
 
   transition: 0.4s;
+  flex-shrink: 0; /* Cross Browsing */
 }
 .class-card:hover {
   box-shadow: 10px 10px 10px -5px rgba(25, 42, 70, 0.2);
@@ -240,9 +241,8 @@ section {
 }
 
 .class-image {
-  width: 240px;
+  max-width: 240px; /* Cross Browsing */
   border-radius: 8px 8px 0 0;
-  height: 150px;
 }
 
 .class-container {
