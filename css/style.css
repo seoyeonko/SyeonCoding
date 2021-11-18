@@ -6,7 +6,7 @@ body {
   /* 가운데 설정 */
   margin: 0 auto;
   color: #3f464d;
-  font-family: "Spoqa Han Sans Neo", "sans-serif";
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
 
 a {
@@ -86,7 +86,7 @@ section {
 
 .main {
   height: 360px;
-  background-image: url("https://www.fun-coding.org/assets_lms/images/photodune-4161018-group-of-students-m.jpg");
+  background-image: url('https://www.fun-coding.org/assets_lms/images/photodune-4161018-group-of-students-m.jpg');
   background-size: cover;
   background-position: center 10%;
   background-repeat: no-repeat;
@@ -318,6 +318,42 @@ footer {
 .copyright {
   color: #545e6f;
   margin: 1rem 0.5rem;
+}
+
+#backtotop {
+  background-color: rgb(47, 48, 49);
+  width: 40px;
+  height: 40px;
+  text-align: center;
+
+  border-radius: 20px;
+  position: fixed; /* 고정 */
+  bottom: 30px;
+  right: 30px;
+  transition-property: background-color, opacity, visiblity;
+  transition-duration: 0.3s, 0.5s, 0.5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999; /* 제일 앞에 오도록 */
+}
+
+/* 아이콘 적용 방법
+  1. ::after (요소 뒤에 content 추가) 
+  2. content: "폰트어썸 유니코드" 입력
+  3. font-family: FontAwesome이라고 넣으면 이미지 넣어짐
+  */
+#backtotop::after {
+  content: '\f077';
+  font-family: FontAwesome;
+  font-size: 1.5rem;
+  line-height: 40px; /* height와 동일한 값 설정시 가운데 위치*/
+  color: #fff;
+}
+
+#backtotop.show {
+  opacity: 1; /* 불투명 */
+  visibility: visible;
+  background-color: rgb(47, 48, 49);
 }
 
 /* min-width >= 1200px; */
