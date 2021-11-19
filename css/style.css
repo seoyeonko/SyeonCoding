@@ -330,8 +330,8 @@ footer {
   position: fixed; /* 고정 */
   bottom: 30px;
   right: 30px;
-  transition-property: background-color, opacity, visiblity;
-  transition-duration: 0.3s, 0.5s, 0.5s;
+  transition-property: background-color, opacity, visiblity; /* transition 대상이 되는 css 속성 설정*/
+  transition-duration: 0.3s, 0.5s, 0.5s; /* transition 일어나는 시간 */
   opacity: 0;
   visibility: hidden;
   z-index: 999; /* 제일 앞에 오도록 */
@@ -348,6 +348,11 @@ footer {
   font-size: 1.5rem;
   line-height: 40px; /* height와 동일한 값 설정시 가운데 위치*/
   color: #fff;
+}
+
+#backtotop.show:hover {
+  cursor: pointer;
+  background-color: #2186c4;
 }
 
 #backtotop.show {
