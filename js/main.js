@@ -23,9 +23,41 @@ window.addEventListener(
 backToTop.addEventListener('click', moveBackToTop); /* 화면을 맨 위로 올려줌 */
 
 /////////////////////////////
-const transformPrev = () => {
+function transformPrev(event) {
   console.log('prev btn click!');
-};
+  const slidePrev = event.target;
+  const slideNext = slidePrev.nextElementSibling;
+
+  // ul 태그 선택
+  const classList = slidePrev.parentElement.parentElement.nextElementSibling;
+  let activeLi = classList.getAttribute('data-position'); // getAttribute: 해당 태그의 속성에 대한 값을 가져옴
+  const liList = classList.getElementsByTagName('li');
+
+  // classList.clientWidth: ul.class-list의 실제 width 값
+  // liList.length * 260: li 개수 * 각 li의 너비 260px
+  // Number(activeLi): 현재 위치값을 정수 형변환
+  // classList.clientWidth < (liList.length * 260 + Number(activeLi))는 오른쪽으로 나열될 카드들이 넘친 상태: prev(<-) 이동 가능
+  if (classList.clientWidth < liList.length * 260 + Number(activeLi)) {
+    // 왼쪽으로 260 이동 (-260px): data-position 속성값 변경
+    activeLi = Number(activeLi) - 260;
+
+    // 왼쪽으로 넘어간 카드로 인해; ul.class-list 실제 width값 > liList.length * 260 + Number(activeLi) 값
+    // prev(<-) 비활성화 && next(->) 활성화
+    if (classList.clientWidth > liList.length * 260 + Number(activeLi)) {
+      slidePrev.style.color = '#cfd8dc';
+      slidePrev.classList.remove('slide-prev-hover');
+    }
+
+    // next(->) 버튼 활성화
+    slideNext.style.color = '#2f3059';
+    slideNext.classList.add('slide-next-hover');
+  }
+
+  // 이동 효과 부여 & data-position 값 수정
+  classList.style.transition = 'transform 1s';
+  classList.style.transform = 'translateX(' + String(activeLi) + 'px)';
+  classList.setAttribute('data-position', activeLi);
+}
 
 const slidePrevList = document.getElementsByClassName('slide-prev');
 console.log(slidePrevList);
@@ -40,6 +72,7 @@ for (let i = 0; i < slidePrevList.length; i++) {
 
   // 카드가 ul.class-list 태그 너비보다 넘치면,  prev(<-) 버튼 활성화 & 현재 맨 첫 카드이므로 next(->) 버튼 비활성화
   if (classList.clientWidth < liList.length * 260) {
+    // 260px = 240px(width) + 20px(margin 좌우 10px씩)
     slidePrevList[i].classList.add('slide-prev-hover');
     slidePrevList[i].addEventListener('click', transformPrev);
   } else {
