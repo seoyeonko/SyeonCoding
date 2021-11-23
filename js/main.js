@@ -23,6 +23,39 @@ window.addEventListener(
 backToTop.addEventListener('click', moveBackToTop); /* 화면을 맨 위로 올려줌 */
 
 /////////////////////////////
+function transformNext(event) {
+  console.log('next btn click!');
+  const slideNext = event.target;
+  const slidePrev = slideNext.previousElementSibling;
+
+  // ul 태그 선택
+  const classList = slideNext.parentElement.parentElement.nextElementSibling;
+  let activeLi = classList.getAttribute('data-position');
+  const liList = classList.getElementsByTagName('li');
+
+  // data-position 값이 0보다 작다면, next(->) 버튼 활성화
+  // 하나의 카드라도 왼쪽으로 이동시, 오른쪽으로 갈 수 있음
+  if (Number(activeLi) < 0) {
+    activeLi = Number(activeLi) + 260;
+
+    // 왼쪽에 있던 카드가 오른쪽으로 갔다면, 다시 왼쪽으로 갈 수 있으므로 prev(<-)버튼 활성화
+    slidePrev.style.color = '#2f3059';
+    slidePrev.classList.add('slide-prev-hover');
+    slidePrev.addEventListener('click', transformPrev);
+
+    if (Number(activeLi) === 0) {
+      slideNext.style.color = '#cfd8dc';
+      slideNext.classList.remove('slide-next-hover');
+      slideNext.removeEventListener('click', transformNext);
+    }
+  }
+
+  // 이동 효과 부여 & data-position 값 수정
+  classList.style.transition = 'transform 1s';
+  classList.style.transform = 'translateX(' + String(activeLi) + 'px)';
+  classList.setAttribute('data-position', activeLi);
+}
+
 function transformPrev(event) {
   console.log('prev btn click!');
   const slidePrev = event.target;
@@ -46,11 +79,13 @@ function transformPrev(event) {
     if (classList.clientWidth > liList.length * 260 + Number(activeLi)) {
       slidePrev.style.color = '#cfd8dc';
       slidePrev.classList.remove('slide-prev-hover');
+      slidePrev.removeEventListener('click', transformPrev);
     }
 
     // next(->) 버튼 활성화
     slideNext.style.color = '#2f3059';
     slideNext.classList.add('slide-next-hover');
+    slideNext.addEventListener('click', transformNext);
   }
 
   // 이동 효과 부여 & data-position 값 수정
